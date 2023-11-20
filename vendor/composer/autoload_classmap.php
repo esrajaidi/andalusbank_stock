@@ -6,9 +6,11 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Assets' => $baseDir . '/app/Assets.php',
     'App\\Branches' => $baseDir . '/app/Branches.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\AssetsController' => $baseDir . '/app/Http/Controllers/AssetsController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
@@ -35,9 +37,10 @@ return array(
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
-    'App\\Transactiones' => $baseDir . '/app/Transactiones.php',
     'App\\User' => $baseDir . '/app/User.php',
+    'AssetsSeeder' => $baseDir . '/database/seeds/AssetsSeeder.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+    'BranchesSeeder' => $baseDir . '/database/seeds/BranchesSeeder.php',
     'Brick\\Math\\BigDecimal' => $vendorDir . '/brick/math/src/BigDecimal.php',
     'Brick\\Math\\BigInteger' => $vendorDir . '/brick/math/src/BigInteger.php',
     'Brick\\Math\\BigNumber' => $vendorDir . '/brick/math/src/BigNumber.php',

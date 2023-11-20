@@ -81,12 +81,7 @@
                         <p>إدارة الفروع</p>
                     </a>
                 </li>
-                <li>
-                    <a href={{ route('transactiones') }}>
-                        <i class="pe-7s-photo-gallery"></i>
-                        <p>إدارة العمليات</p>
-                    </a>
-                </li>
+                
             </ul>
     	</div>
     <div class="sidebar-background" style=""></div></div>

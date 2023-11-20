@@ -497,9 +497,11 @@ class ComposerStaticInit31d11ed9330ce4c2fb5b9835c9e1e3e3
     );
 
     public static $classMap = array (
+        'App\\Assets' => __DIR__ . '/../..' . '/app/Assets.php',
         'App\\Branches' => __DIR__ . '/../..' . '/app/Branches.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\AssetsController' => __DIR__ . '/../..' . '/app/Http/Controllers/AssetsController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -526,9 +528,10 @@ class ComposerStaticInit31d11ed9330ce4c2fb5b9835c9e1e3e3
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
-        'App\\Transactiones' => __DIR__ . '/../..' . '/app/Transactiones.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'AssetsSeeder' => __DIR__ . '/../..' . '/database/seeds/AssetsSeeder.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'BranchesSeeder' => __DIR__ . '/../..' . '/database/seeds/BranchesSeeder.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
         'Brick\\Math\\BigNumber' => __DIR__ . '/..' . '/brick/math/src/BigNumber.php',
