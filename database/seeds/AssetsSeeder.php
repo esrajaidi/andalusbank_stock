@@ -27,45 +27,45 @@ class AssetsSeeder extends Seeder
         ]);
 
         Assets::create([
-            'id' => 3, 
+            'id' => 4, 
             'name' => 'أثاث',
         ]);
         Assets::create([
-            'id' => 4, 
+            'id' => 5, 
             'name' => 'سيارات',
         ]);
         Assets::create([
-            'id' => 5, 
+            'id' => 6, 
             'name' => 'سيارة نقل نقود',
         ]);
         Assets::create([
-            'id' => 6, 
+            'id' => 7, 
             'name' => 'طابعات',
         ]);
         Assets::create([
-            'id' => 7, 
+            'id' => 8, 
             'name' => 'ختم',
         ]);
         Assets::create([
-            'id' => 8, 
+            'id' => 9, 
             'name' => 'خزينة',
         ]);
         Assets::create([
-            'id' => 9, 
+            'id' => 10, 
             'name' => '  مفتاح خزنة',
         ]);
       	
         Assets::create([
-            'id' => 10, 
+            'id' => 11, 
             'name' => 'شاشات',
         ]);
 
         Assets::create([
-            'id' => 11, 
+            'id' => 12, 
             'name' => 'ماسحة ضوئية',
         ]);
         Assets::create([
-            'id' => 11, 
+            'id' => 13, 
             'name' => 'طابعة صكوك',
         ]);
         

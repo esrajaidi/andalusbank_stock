@@ -1,9 +1,11 @@
 <?php
-
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashbored;
+    
+use Illuminate\Http\Request;
 
 use App\Assets;
-use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use jeremykenedy\LaravelLogger\App\Http\Traits\ActivityLogger;
 
 class AssetsController extends Controller
 {
@@ -12,9 +14,13 @@ class AssetsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        ActivityLogger::activity("عرض صفحة كافة الاصول");
+        $assets = Assets::orderBy('id','DESC')->paginate(10);
+        return view('dashboard.assets.index',compact('assets'))
+            ->with('i', ($request->input('page', 1) - 1) * 10);
+
     }
 
     /**

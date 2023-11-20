@@ -81,6 +81,12 @@
                         <p>إدارة الفروع</p>
                     </a>
                 </li>
+                <li>
+                    <a href={{ route('assets') }}>
+                        <i class="pe-7s-home"></i>
+                        <p>إدارة الاصول</p>
+                    </a>
+                </li>
                 
             </ul>
     	</div>
