@@ -17,8 +17,10 @@
       <div class="col-md-12">
           <div class="card">
               <div class="header">
+                @can('branche-create')
                 <a class="btn btn-success" href="{{ route('branches/create') }}">   إضافة فرع جديد </a>
                 </div>
+              @endcan
               <div class="content table-responsive table-full-width">
               
                   <table class="table table-hover table-striped">
@@ -35,6 +37,7 @@
                       <td>{{ $branche->branche_number }}</td>
                       <td>{{ $branche->branche_name }}</td>
                   
+
                         @if($branche->active==1)          
                     <td>  <span class="badge badge-success">مفعل</span> </td>         
               @else
@@ -43,13 +46,17 @@
                      
 
                       <td>
+                        @can('branche-edit')
+
                             <a class="btn btn-primary" href="{{ route('branches/edit',encrypt($branche->id)) }}">تعديل</a>
-                       
+                       @endcan
+                       @can('branche-delete')
                       @if($branche->active==1)          
                       <a class="btn btn-danger" href="{{ route('branches/changeStatus',encrypt($branche->id)) }}"> الغاء تفعيل</a>
                       @else
                       <a class="btn btn-success" href="{{ route('branches/changeStatus',encrypt($branche->id)) }}">  تفعيل</a>
                       @endif
+                      @endcan
                              
 
                     </td>

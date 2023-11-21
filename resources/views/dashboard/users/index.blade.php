@@ -17,8 +17,10 @@
       <div class="col-md-12">
           <div class="card">
               <div class="header">
+                @can('user-create')
                 <a class="btn btn-success" href="{{ route('users/create') }}">   إضافة مستخدم جديد </a>
-                </div>
+              @endcan  
+              </div>
               <div class="content table-responsive table-full-width">
               
                   <table class="table table-hover table-striped">
@@ -49,17 +51,26 @@
                     <td>  <span class="badge badge-danger">معطل</span> </td>         
                     @endif
                       <td>
+
                          <a class="btn btn-info" href="{{ route('users/show',encrypt($user->id)) }}">عرض</a>
+                         @can('user-edit')
                          <a class="btn btn-primary" href="{{ route('users/edit',encrypt($user->id)) }}">تعديل</a>
+                         @endcan
+
+                         @can('user-changestatus')
+
                          @if($user->active==1)          
                           <a class="btn btn-danger" href="{{ route('users/changeStatus',encrypt($user->id)) }}"> الغاء تفعيل</a>
                           @else
                           <a class="btn btn-success" href="{{ route('users/changeStatus',encrypt($user->id)) }}">  تفعيل</a>
                           @endif
                         
+                          @endcan
+                          @can('user-changestatus')
                           {!! Form::open(['method' => 'DELETE','route' => ['users/destroy', encrypt($user->id)],'style'=>'display:inline']) !!}
                           {!! Form::submit('الغاء', ['class' => 'btn btn-danger']) !!}
                           {!! Form::close() !!}
+                          @endcan
                       </td>
                     </tr>
                    @endforeach

@@ -17,8 +17,10 @@
       <div class="col-md-12">
           <div class="card">
             <div class="header">
+              @can('asset-create')
               <a class="btn btn-success" href="{{ route('assets/create') }}">   إضافة الاصل جديد </a>
-              </div>
+              @endcan  
+            </div>
               <div class="content table-responsive table-full-width">
               
                   <table class="table table-hover table-striped">
@@ -44,13 +46,16 @@
                      
 
                       <td>
+                        @can('asset-edit')
                         <a class="btn btn-primary" href="{{ route('assets/edit',encrypt($asset->id)) }}">  تعديل</a>
-
+                        @endcan
+                        @can('asset-changestatus')
                       @if($asset->active==1)          
                       <a class="btn btn-danger" href="{{ route('assets/changeStatus',encrypt($asset->id)) }}"> الغاء تفعيل</a>
                       @else
                       <a class="btn btn-success" href="{{ route('assets/changeStatus',encrypt($asset->id)) }}">  تفعيل</a>
                       @endif
+                      @endcan
                              
 
                     </td>

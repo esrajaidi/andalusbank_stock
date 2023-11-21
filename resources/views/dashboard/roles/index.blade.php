@@ -17,8 +17,10 @@
       <div class="col-md-12">
           <div class="card">
               <div class="header">
+                  @can('role-create')
                 <a class="btn btn-success" href="{{ route('roles/create') }}">   إضافة صلاحية جديد </a>
-                </div>
+            @endcan    
+            </div>
               <div class="content table-responsive table-full-width">
               
                   <table class="table table-hover table-striped">
