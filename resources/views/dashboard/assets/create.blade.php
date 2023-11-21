@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 <label> اسم الاصل </label>
 
-                                <input type="text" class="form-control" name="name"  maxlength="50" value="{{old('name')}}"  placeholder="اسم الاصل " >
+                                <input type="text" class="form-control" name="name"  maxlength="50" value="{{old('name')}}"  placeholder="اسم الاصل " />
                                 @error('name')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>

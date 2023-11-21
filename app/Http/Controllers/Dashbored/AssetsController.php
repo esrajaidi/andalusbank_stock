@@ -69,7 +69,6 @@ class AssetsController extends Controller
     public function changeStatus(Request $request, $id)
     {
         $assets_id = decrypt($id);
-
         try {
             DB::transaction(function () use ($request, $assets_id) {
                 $assets = Assets::find($assets_id);
@@ -78,12 +77,10 @@ class AssetsController extends Controller
                 } else {
                     $active = 1;
                 }
-
                 $assets->active = $active;
                 $assets->save();
             });
             ActivityLogger::activity($assets_id . "تغيير حالة  اصل:");
-
             Alert::success('تمت عملية تغيير حالة الاصل بنجاح');
 
             return redirect('assets');
@@ -97,26 +94,44 @@ class AssetsController extends Controller
     }
    
 
-    public function show(Assets $assets)
-    {
-        
-    }
-
     
-    public function edit(Assets $assets)
-    {
-        
-    }
 
   
-    public function update(Request $request, Assets $assets)
+    public function edit($id)
     {
-        
+            $assets_id = decrypt($id);
+            $assets = Assets::find($assets_id);
+            ActivityLogger::activity($assets->name . ":عرض صفحة تعديل بيانات اصل");
+            return view('dashboard.assets.edit')->with('assets', $assets);
     }
 
-    
-    public function destroy(Assets $assets)
+    public function update(Request $request, $id)
     {
-        
+        $assets_id = decrypt($id);
+        $messages = [
+            'name.required' => 'الرجاء ادخل اسم الاصل',
+            'name.unique'=>'اسم الاصل مستخدم مسبقا',
+        ];
+        $this->validate($request, [
+            'name' => ['required', 'string','unique:assets,name,'.$assets_id],
+        ], $messages);
+        try {
+            DB::transaction(function () use ($request, $assets_id) {
+                $assets = Assets::find($assets_id);
+                $assets->name = $request->name;
+                $assets->save();
+                ActivityLogger::activity($assets->id . ":تعديل بيانات اصل");
+            });
+
+            Alert::success('تمت عملية تعديل بيانات اصل بنجاح');
+
+            return redirect()->route('assets');
+        } catch (\Exception $e) {
+
+            Alert::warning($e->getMessage());
+            ActivityLogger::activity($assets_id . ":  فشل تعديل بيانات اصل ");
+
+            return redirect()->back();
+        }
     }
 }

@@ -44,7 +44,8 @@
                      
 
                       <td>
-                       
+                        <a class="btn btn-primary" href="{{ route('assets/edit',encrypt($asset->id)) }}">  تعديل</a>
+
                       @if($asset->active==1)          
                       <a class="btn btn-danger" href="{{ route('assets/changeStatus',encrypt($asset->id)) }}"> الغاء تفعيل</a>
                       @else

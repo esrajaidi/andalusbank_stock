@@ -1,5 +1,5 @@
 @extends('layouts.dashboard_app')
-@section('title', 'تعديل بيانات اصل')
+@section('title', 'تعديل اصل')
 
 
 @section('content')
@@ -18,27 +18,35 @@
         <div class="card">
             <div class="header" >
                 
-                <h4 class="title"> تعديل بيانات اصل </h4>
+                <h4 class="title">  تعديل اصل</h4>
             </div>
             <div class="content">
                 <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal ">
                     @csrf
-  
+                        <div class="row">
+                            
+                        
+                        </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label> اسم الاصل </label>
-                                <input type="text" class="form-control" name="name"  maxlength="50" value="{{ $branche->name }}"  placeholder="اسم الاصل " >
+
+                                <input type="text" class="form-control" name="name"  maxlength="50" value="{{$assets->name}}"  placeholder="اسم الاصل " />
                                 @error('name')
-                                    <span class="text-danger" branche="alert">
+                                    <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span> 
                                 @enderror
                             </div>
                         </div>
+                     
+                       
+                      
                     </div>
+                  
 
-                    <button type="submit" class="btn btn-info btn-fill pull-left">تعديل  اصل </button>
+                    <button type="submit" class="btn btn-info btn-fill pull-left">تعديل اصل </button>
                     <div class="clearfix"></div>
                 </form>
             </div>
@@ -50,4 +58,11 @@
 
 
 @endsection
+
+
+
+
+
+
+
 
