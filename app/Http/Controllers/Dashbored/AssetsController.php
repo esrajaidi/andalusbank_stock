@@ -1,11 +1,10 @@
 <?php
 namespace App\Http\Controllers\Dashbored;
     
-use Illuminate\Http\Request;
-
 use App\Assets;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use DB;
 use jeremykenedy\LaravelLogger\App\Http\Traits\ActivityLogger;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -67,6 +66,35 @@ class AssetsController extends Controller
         }
     }
 
+    public function changeStatus(Request $request, $id)
+    {
+        $assets_id = decrypt($id);
+
+        try {
+            DB::transaction(function () use ($request, $assets_id) {
+                $assets = Assets::find($assets_id);
+                if ($assets->active == 1) {
+                    $active = 0;
+                } else {
+                    $active = 1;
+                }
+
+                $assets->active = $active;
+                $assets->save();
+            });
+            ActivityLogger::activity($assets_id . "تغيير حالة  اصل:");
+
+            Alert::success('تمت عملية تغيير حالة الاصل بنجاح');
+
+            return redirect('assets');
+        } catch (\Exception $e) {
+
+            Alert::warning($e->getMessage());
+            ActivityLogger::activity($assets_id . " فشل تغيير حال اصل");
+
+            return redirect()->back();
+        }
+    }
    
 
     public function show(Assets $assets)

@@ -16,8 +16,9 @@
   <div class="row">
       <div class="col-md-12">
           <div class="card">
-              <div class="header">
-                </div>
+            <div class="header">
+              <a class="btn btn-success" href="{{ route('assets/create') }}">   إضافة الاصل جديد </a>
+              </div>
               <div class="content table-responsive table-full-width">
               
                   <table class="table table-hover table-striped">
