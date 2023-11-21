@@ -54,7 +54,13 @@ Route::group(['middleware' => ['auth']], function() {
     Route::POST('branches/edit/{id}', [App\Http\Controllers\Dashbored\BranchesController::class, 'update'])->name('branches/update');
     Route::get('branches/changeStatus/{id}', [App\Http\Controllers\Dashbored\BranchesController::class, 'changeStatus'])->name('branches/changeStatus');
 
+        // *********************assets**********************
     Route::get('assets', [App\Http\Controllers\Dashbored\AssetsController::class, 'index'])->name('assets');
+    Route::get('assets/create', [App\Http\Controllers\Dashbored\AssetsController::class, 'create'])->name('assets/create');
+    Route::post('assets/create', [App\Http\Controllers\Dashbored\AssetsController::class, 'store'])->name('assets/store');
+    Route::get('assets/edit/{id}', [App\Http\Controllers\Dashbored\AssetsController::class, 'edit'])->name('assets/edit');
+    Route::POST('assets/edit/{id}', [App\Http\Controllers\Dashbored\AssetsController::class, 'update'])->name('assets/update');
+    Route::get('assets/changeStatus/{id}', [App\Http\Controllers\Dashbored\AssetsController::class, 'changeStatus'])->name('assets/changeStatus');
 
 });
 });

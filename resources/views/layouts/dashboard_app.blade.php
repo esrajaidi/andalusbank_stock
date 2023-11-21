@@ -44,7 +44,7 @@
 	<link href="http://fonts.googleapis.com/earlyaccess/droidarabickufi.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('dashboard/assets/css/pe-icon-7-stroke.css') }}" rel="stylesheet">
 
-<body style="">
+<body style="" dir="rtl">
     @include('sweetalert::alert')
 
 <div class="wrapper">

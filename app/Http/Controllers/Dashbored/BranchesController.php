@@ -12,6 +12,16 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class BranchesController extends Controller
 {
+
+    function __construct()
+    {
+         $this->middleware('permission:branche-list|branche-create|branche-edit|branche-delete|branche-changestatus', ['only' => ['index']]);
+         $this->middleware('permission:branche-create', ['only' => ['create','store']]);
+         $this->middleware('permission:branche-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:branche-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:branche-changestatus', ['only' => ['changeStatus']]);
+
+    }
     /**
      * Display a listing of the resource.
      *

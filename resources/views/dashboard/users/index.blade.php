@@ -7,7 +7,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
+        <div class="pull-right">
             <h2>@yield('title')</h2>
         </div>
        

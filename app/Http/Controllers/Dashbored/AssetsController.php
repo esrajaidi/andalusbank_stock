@@ -5,10 +5,21 @@ use Illuminate\Http\Request;
 
 use App\Assets;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use jeremykenedy\LaravelLogger\App\Http\Traits\ActivityLogger;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AssetsController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:asset-list|asset-create|asset-edit|asset-delete|asset-changestatus', ['only' => ['index']]);
+         $this->middleware('permission:asset-create', ['only' => ['create','store']]);
+         $this->middleware('permission:asset-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:asset-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:asset-changestatus', ['only' => ['changeStatus']]);
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,69 +34,61 @@ class AssetsController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        ActivityLogger::activity("عرض صفحة إضافة اصل جديد ");
+        return view('dashboard.assets.create');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'name.required' => 'الرجاء ادخل اسم الاصل',
+            'name.unique'=>'اسم الاصل مستخدم مسبقا',
+        ];
+        $this->validate($request, [
+            'name' => ['required', 'string','unique:assets,name'],
+        ], $messages);
+        try {
+            DB::transaction(function () use ($request) {
+                $assets = new Assets();
+                $assets->name = $request->name;
+                $assets->active = 1;
+                $assets->save();
+            });
+            Alert::success('تمت عملية إضافة اصل  بنجاح');
+            ActivityLogger::activity($request->name . ":إضافة اصل جديد ");
+            return redirect()->route('assets');
+        } catch (\Exception $e) {
+            Alert::warning($e->getMessage());
+            ActivityLogger::activity($request->name . " :فشل عملية إضافة اصل جديد ");
+            return redirect()->back();
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Assets  $assets
-     * @return \Illuminate\Http\Response
-     */
+   
+
     public function show(Assets $assets)
     {
-        //
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Assets  $assets
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(Assets $assets)
     {
-        //
+        
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Assets  $assets
-     * @return \Illuminate\Http\Response
-     */
+  
     public function update(Request $request, Assets $assets)
     {
-        //
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Assets  $assets
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy(Assets $assets)
     {
-        //
+        
     }
 }
